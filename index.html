@@ -39,20 +39,20 @@
   Like this blog? You can download the entire thing by using your browser to save this page. <a href="https://github.com/bachmeil/sfb">Create your own single file blog</a>.
 </div>
 
-<div class="blog" post-title="What is this?" id="what is this">
+<div class="blog" post-title="What is this?" id="whatisthis">
 This is a blog in a single html file.
 
 - You can create/edit posts online using the Github code editor.
 - Works with Github pages.
 - Posts are authored in markdown. Equations are supported using MathJax.
 - The index page is generated automatically.
-- You can link to other pages within the blog like this: `[description](?post=id)`.
+- You can link to other posts within the blog.
 </div>
-<div class="blog" post-title="How to use this" id="how to use">
+<div class="blog" post-title="How to use this" id="howtouse">
 # How to use
 
 - To create a new page, add a div with three attributes: `class="blog"`, `post-title`, and `id`.
-- Link to other blog posts by creating links of this form: `[description](?post=id)`.
+- Link to other blog posts by creating links of this form: `[description](?post=id)`. The id cannot have a space (limitation of markdown-it).
 - Relative URLs that do not have a `post` parameter appended will return the index page. 
 - You can also embed equations inline like this: $y_{t} = \delta_{t}$, or displayed like this:
 $$x_{t} = \xi_{t}$$
