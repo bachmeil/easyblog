@@ -56,28 +56,22 @@
   Like this blog? You can download the entire thing by using your browser to save this page. <a href="https://github.com/bachmeil/sfb">Create your own single file blog</a>.
 </div>
 
-<div class="blog" post-title="First post on this blog" id="firstpost">
-This is the first post on the blog.
+<div class="blog" post-title="What is this?" id="what is this">
+This is a blog in a single html file.
 
-- I can use markdown.
-- It generates an index automatically.
+- You can create/edit posts online using the Github code editor.
+- Works with Github pages.
+- Posts are authored in markdown. Equations are supported using MathJax.
+- The index page is generated automatically.
+- You can link to other pages within the blog like this: `[description](?post=id)`.
 </div>
 <div class="blog" post-title="Second post on this blog" id="secondpost">
 # How to use
 
-Create a div with three attributes: `class="blog"`, `post-title`, and `id`.
-
-Now, that might seem like a lot of work, but it's not bad given that you then
-have everything you need for a complete blog (or wiki) in a single html file.
-Linking to another page is done like this: `[description](?post=id)`.
-
-Just be careful if you have embedded html. If you have a closing div tag, it may
-cause your post to be truncated. That shouldn't be much of a constraint.
-If you're writing a blog post, you shouldn't need to be loading it up with
-html (unless you're writing a blog post about html, in which case you should be
-able to figure out a solution).
-
-You can also embed equations inline like this: $y_{t} = \delta_{t}$, or displayed like this:
+- To create a new page, add a div with three attributes: `class="blog"`, `post-title`, and `id`.
+- Link to other blog posts by creating links of this form: `[description](?post=id)`.
+- Relative URLs that do not have a `post` parameter appended will return the index page. 
+- You can also embed equations inline like this: $y_{t} = \delta_{t}$, or displayed like this:
 $$x_{t} = \xi_{t}$$
 </div>
 
