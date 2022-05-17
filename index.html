@@ -1,14 +1,7 @@
 <head>
 <style>
-	body {
-		max-width: 960px;
-		margin: auto;
-	}
-		
-	.post {
-		font-family: cantarell, Roboto, Arial, sans-serif;
-	}
-
+	body { max-width: 960px; margin: auto; }
+	.post { font-family: cantarell, Roboto, Arial, sans-serif; }
 	.post .title {
 		display: block;
 		font-size: 2em;
@@ -19,25 +12,15 @@
 		font-weight: bold;
 		font-family: Ubuntu, Roboto, "Trebuchet MS", sans-serif;
 	}
-	
-	.post .content {
-		font-size: 1.2em;
-	}
-  
-  .footer {
-    position: fixed;
-    bottom: 15px;
-    left: 20px;
+	.post .content { font-size: 1.2em; }
+    .footer {
+    	position: fixed;
+    	bottom: 15px;
+    	left: 20px;
 		font-family: cantarell, Roboto, Arial, sans-serif;
-  }
-  
-  code {
-    font-family: "Ubuntu Mono", "Courier New", monospace;
-  }
-
-  .blog {
-	  display: none;
-  }
+  	}
+	code { font-family: "Ubuntu Mono", "Courier New", monospace; }
+	.blog { display: none; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
@@ -65,7 +48,7 @@ This is a blog in a single html file.
 - The index page is generated automatically.
 - You can link to other pages within the blog like this: `[description](?post=id)`.
 </div>
-<div class="blog" post-title="Second post on this blog" id="secondpost">
+<div class="blog" post-title="How to use this" id="how to use">
 # How to use
 
 - To create a new page, add a div with three attributes: `class="blog"`, `post-title`, and `id`.
