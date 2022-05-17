@@ -1,0 +1,120 @@
+<head>
+<style>
+	body {
+		max-width: 960px;
+		margin: auto;
+	}
+		
+	.post {
+		font-family: cantarell, Roboto, Arial, sans-serif;
+	}
+
+	.post .title {
+		display: block;
+		font-size: 2em;
+		margin-top: 0.67em;
+		margin-bottom: 0.67em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: bold;
+		font-family: Ubuntu, Roboto, "Trebuchet MS", sans-serif;
+	}
+	
+	.post .content {
+		font-size: 1.2em;
+	}
+  
+  .footer {
+    position: fixed;
+    bottom: 15px;
+    left: 20px;
+		font-family: cantarell, Roboto, Arial, sans-serif;
+  }
+  
+  code {
+    font-family: "Ubuntu Mono", "Courier New", monospace;
+  }
+
+  .blog {
+	  display: none;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath/texmath.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-task-lists/dist/markdown-it-task-lists.js"></script>
+</head>
+
+<div class="post">
+	<div class="title" id="post-title"></div>
+	<div class="time" id="post-time"></div>
+	<div class="content" id="post-content"></div>
+</div>
+<div class="footer">
+  Like this blog? You can download the entire thing by using your browser to save this page. <a href="https://github.com/bachmeil/sfb">Create your own single file blog</a>.
+</div>
+
+<div class="blog" post-title="First post on this blog" id="firstpost">
+This is the first post on the blog.
+
+- I can use markdown.
+- It generates an index automatically.
+</div>
+<div class="blog" post-title="Second post on this blog" id="secondpost">
+# How to use
+
+Create a div with three attributes: `class="blog"`, `post-title`, and `id`.
+
+Now, that might seem like a lot of work, but it's not bad given that you then
+have everything you need for a complete blog (or wiki) in a single html file.
+Linking to another page is done like this: `[description](?post=id)`.
+
+Just be careful if you have embedded html. If you have a closing div tag, it may
+cause your post to be truncated. That shouldn't be much of a constraint.
+If you're writing a blog post, you shouldn't need to be loading it up with
+html (unless you're writing a blog post about html, in which case you should be
+able to figure out a solution).
+
+You can also embed equations inline like this: $y_{t} = \delta_{t}$, or displayed like this:
+$$x_{t} = \xi_{t}$$
+</div>
+
+<script>
+	const md = markdownit({html:true})
+						  .use(texmath, { engine: katex,
+										  delimiters: 'dollars',
+										  katexOptions: { macros: {"\\RR": "\\mathbb{R}"} } })
+						  .use(window.markdownitTaskLists, {enabled: false});
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['$$', '$$']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+<script>
+	var par = (new URL(document.location)).searchParams;
+	// If parameter post is included, go to that post
+	// Otherwise build the index
+	if (par.get("post")) {
+		var post = document.getElementById(par.get("post"));
+		document.getElementById("post-title").innerHTML = md.render(post.getAttribute("post-title"));
+		document.getElementById("post-content").innerHTML = md.render(post.innerHTML + "\n\n<a href='?'>Back To Index</a>");
+	} else {
+		document.getElementById("post-title").innerText = "Index";
+		var indexPage = '';
+		for (post of document.getElementsByClassName("blog")) {
+			indexPage += "- [" + post.getAttribute("post-title") + "](?post=" + post.id + ")\n";
+		}
+		document.getElementById("post-content").innerHTML = md.render(indexPage);
+	}
+</script>
