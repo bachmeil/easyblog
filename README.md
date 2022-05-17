@@ -1,2 +1,3 @@
 # easyblog
-My attempt to create the world's simple Github pages blog
+
+My attempt to create the simplest Github pages blog 
